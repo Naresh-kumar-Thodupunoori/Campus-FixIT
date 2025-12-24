@@ -75,16 +75,57 @@ npm start
 
 ## Production Deployment
 
-### Backend
-1. Set `NODE_ENV=production` in `.env`
-2. Use a strong `JWT_SECRET`
-3. Configure proper `CLIENT_URL` for CORS
-4. Deploy to platforms like Render, Heroku, Railway, or AWS
+### 📱 Android App Deployment
 
-### Frontend
-1. Update `EXPO_PUBLIC_API_BASE_URL` to production backend URL
-2. Build with EAS Build: `eas build --platform android/ios`
-3. Or use Expo's build service
+**👉 See [ANDROID_DEPLOYMENT.md](./ANDROID_DEPLOYMENT.md) for complete Android app deployment guide.**
+
+Quick Android build:
+```bash
+# 1. Install EAS CLI
+npm install -g eas-cli
+
+# 2. Login to Expo
+eas login
+
+# 3. Configure project
+cd frontend
+eas build:configure
+
+# 4. Set backend URL
+eas secret:create --scope project --name EXPO_PUBLIC_API_BASE_URL --value https://your-backend-url.com
+
+# 5. Build Android APK
+eas build --platform android --profile production
+```
+
+### 📖 General Deployment
+
+**See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.**
+
+### Quick Overview
+
+**Backend Deployment Options:**
+- Railway (Recommended - Easy setup, free tier)
+- Render (Free tier available)
+- Heroku
+- Vercel (Serverless)
+
+**Frontend Deployment:**
+- **Android App:** Use Expo EAS Build (see ANDROID_DEPLOYMENT.md)
+- iOS App: Use Expo EAS Build
+- Web: Deploy to Vercel/Netlify
+
+### Quick Start
+
+1. **Backend:**
+   - Deploy to Railway/Render/Heroku
+   - Set environment variables (see DEPLOYMENT.md)
+   - Get your backend URL
+
+2. **Android App:**
+   - Follow [ANDROID_DEPLOYMENT.md](./ANDROID_DEPLOYMENT.md)
+   - Build APK: `eas build --platform android --profile production`
+   - Install APK on Android device
 
 ## Security
 
