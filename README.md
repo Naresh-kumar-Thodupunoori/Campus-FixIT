@@ -686,7 +686,3 @@ After deploying both:
 - Rate limiting on API endpoints
 - Input validation with express-validator
 - CORS configuration
-
-## License
-
-MIT
